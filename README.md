@@ -84,7 +84,7 @@ A darker visual treatment built around deep grayscale surfaces and reduced visua
 
 ### Ember
 
-A graphite-based interface with neon orange accents.
+A graphite-based interface with bright orange accents.
 
 ### Violet
 
@@ -98,7 +98,7 @@ A bright white and cool-gray interface with a clean modern appearance.
 
 ## 🧩 Theme Patch
 
-This fork includes the theme customization as:
+This fork includes the theme customization patch:
 
 ```text
 munder-difflin-color-themes.patch
@@ -106,16 +106,16 @@ munder-difflin-color-themes.patch
 
 The patch is located at the root of the repository.
 
-To apply it to another checkout of Munder Difflin:
-
-```bash
-git apply munder-difflin-color-themes.patch
-```
-
 To verify the patch before applying it:
 
 ```bash
 git apply --check munder-difflin-color-themes.patch
+```
+
+To apply it:
+
+```bash
+git apply munder-difflin-color-themes.patch
 ```
 
 ---
@@ -124,7 +124,9 @@ git apply --check munder-difflin-color-themes.patch
 
 Free, open source and performant — a multi-agent harness that works with the subscriptions you already pay for, on their hourly limits. It turns the terminal coding CLI you already run into a clone of you, one that keeps working while you're away and coordinates a whole office of agents on your own machine.
 
-Wraps Claude Code, Antigravity (Gemini), OpenAI Codex, xAI Grok, Kimi Code, Gemini CLI, Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, and Cursor — with bring-your-own keys and local LLMs. Agents that message, route, and remember, coordinated by your clone (Michael) and visualized as avatars at work on a shared office floor.
+Wraps Claude Code, Antigravity (Gemini), OpenAI Codex, xAI Grok, Kimi Code, Gemini CLI, Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, and Cursor — with bring-your-own keys and local LLMs.
+
+Agents message, route, and remember, coordinated by your clone (Michael) and visualized as avatars at work on a shared office floor.
 
 **Electron · React · TypeScript · Pixi.js · xterm.js · node-pty**
 
@@ -162,12 +164,12 @@ Plus bring your own keys and local models through Ollama, LM Studio or vLLM.
 
 Munder Difflin is a desktop app that wraps real terminal-agent CLIs as fully-capable agents, wires them into a hive mind, and puts your clone in charge — Michael, the one agent you talk to in order to get things done.
 
-Under the hood it runs the fastest memory layer in the world so every agent remembers what it learns and recalls it instantly.
+Under the hood it runs the memory layer so every agent can remember what it learns and recall it across sessions.
 
-* **Every terminal is an agent.** Each `claude`, `agy`, `codex`, `grok`, `kimi`, `qwen`, `opencode`, `crush`, `pi`, `copilot`, or custom session runs as a real process in a pseudo-terminal (`node-pty`), byte-for-byte authentic, rendered with xterm.js.
-* **Every agent is an avatar.** Sessions appear as characters on a Pixi.js office floor — they walk to stations as they work, and envelopes fly desk-to-desk when they message each other.
-* **The hive coordinates them.** Agents read their memory and drain a mailbox; the router moves messages between inboxes; the GOD agent adjudicates, assigns, and escalates only when it needs you.
-* **Memory that's instant.** A markdown-first memory layer with a semantic recall index means agents remember across sessions and recall in milliseconds.
+* **Every terminal is an agent.** Each `claude`, `agy`, `codex`, `grok`, `kimi`, `qwen`, `opencode`, `crush`, `pi`, `copilot`, or custom session runs as a real process in a pseudo-terminal (`node-pty`), rendered with xterm.js.
+* **Every agent is an avatar.** Sessions appear as characters on a Pixi.js office floor — they walk to stations as they work, and messages can travel between desks.
+* **The hive coordinates them.** Agents read their memory and drain a mailbox; the router moves messages between inboxes; the GOD agent coordinates work and escalates when human input is required.
+* **Memory across sessions.** A markdown-first memory layer with semantic recall allows agents to retain useful information across sessions.
 
 ---
 
@@ -175,11 +177,13 @@ Under the hood it runs the fastest memory layer in the world so every agent reme
 
 ```text
             you ── talk to ──►  ┌─────────────┐
-                                 │  GOD agent  │  orchestrator / supervisor
-                                 │ (Michael's  │  roster · routing · adjudication
-                                 │   office)   │  blackboard · task ledger
+                                 │  GOD agent  │
+                                 │  Michael    │
+                                 │ orchestrator│
                                  └──────┬──────┘
-                                        │ assigns · routes · escalates
+                                        │
+                       assigns · routes · escalates
+                                        │
               ┌─────────────────────────┼─────────────────────────┐
               ▼                         ▼                         ▼
         ┌───────────┐            ┌───────────┐            ┌───────────┐
@@ -190,10 +194,11 @@ Under the hood it runs the fastest memory layer in the world so every agent reme
               └──────── shared hive: memory · mailbox · blackboard · log ───────┘
 ```
 
-1. You spawn agents — each is a normal terminal process (`claude`, `agy`, `codex`, or custom) with its own working directory, identity, and provider-specific lifecycle.
-2. Agents collaborate through the hive — a local git repo of plain files. They write to their own `outbox/`; the harness's router delivers into recipients' `inbox/`. No agent ever touches git (single-committer design avoids `index.lock` corruption).
-3. The GOD agent runs the floor — it reads every request, resolves routine ones itself (keeping the system fully autonomous), and only escalates critical items (spend, destructive ops, scope changes) into an approvals queue you act on.
-4. Everything is visible — you watch avatars move, envelopes fly, and the live terminal stream; you can type back into any session, browse its files, and read its git history.
+1. You spawn agents — each is a normal terminal process with its own working directory, identity, and provider-specific lifecycle.
+2. Agents collaborate through the hive — a local git repo of plain files.
+3. Agents write to their own `outbox/`; the harness router delivers messages into recipients' `inbox/`.
+4. The GOD agent coordinates the floor and escalates critical items when human input is required.
+5. Everything is visible — watch avatars move, inspect terminals, browse files, and interact with sessions directly.
 
 See `HIVE.md` for the full multi-agent design, `SPEC.md` for the terminal/event plane, and `DESIGN.md` for the visual system.
 
@@ -203,27 +208,29 @@ See `HIVE.md` for the full multi-agent design, `SPEC.md` for the terminal/event 
 
 ### Talk to one agent, not twelve
 
-Michael is your clone and the only agent you brief. He assigns the work, routes the traffic, and escalates the few things that actually need you.
+Michael is your clone and the agent you brief. He assigns work, routes traffic, and escalates tasks that need you.
 
 ### Hire an agent in a few clicks
 
-Pick the CLI, the model and the autonomy, give it a desk, and it starts working.
+Pick the CLI, model and autonomy, give it a desk, and it starts working.
 
 ### Memory that survives the session
 
-Every agent keeps markdown memory that is mined into a shared, searchable palace. Close the app, come back tomorrow, and they still know what they learned.
+Every agent keeps markdown memory that can be mined into a shared searchable memory layer.
 
 ### Autonomy with a leash
 
-Set how far each agent may go on its own. Spend, scope and destructive operations come back to you, and a circuit breaker steers, constrains, then stops anything that loops or runs away.
+Set how far each agent may go on its own. Critical actions can return to you for approval.
 
 ### Watch the whole floor work
 
-Agents walk to stations as they work and envelopes fly desk to desk when they message each other. Click any desk to read that terminal live, and type straight back into it.
+Agents walk to stations as they work and messages travel between desks.
+
+Click any desk to read that terminal live and interact with it directly.
 
 ### Set up once
 
-The onboarding wizard checks what you already have, and offers to install what is missing rather than sending you to a docs page.
+The onboarding wizard checks what you already have and helps identify missing prerequisites.
 
 ### The floor
 
@@ -231,7 +238,7 @@ The onboarding wizard checks what you already have, and offers to install what i
 * Every agent is an avatar.
 * A GOD orchestrator coordinates the floor.
 * Optional per-agent git worktrees provide isolation.
-* The office visually reflects real agent activity.
+* The office visually reflects agent activity.
 
 ### Memory & coordination
 
@@ -241,7 +248,7 @@ The onboarding wizard checks what you already have, and offers to install what i
 * Append-only event log.
 * Single-committer git.
 * Semantic recall.
-* Enterprise Knowledge Graph.
+* Knowledge graph functionality.
 
 ### Control & safety
 
@@ -262,12 +269,12 @@ The onboarding wizard checks what you already have, and offers to install what i
 * Activity log.
 * CI watcher.
 * Skills browser.
-* Built-in Monaco IDE.
+* Built-in IDE.
 * Git history and diffs.
 
 ### Getting work in and out
 
-* Slack and webhooks.
+* Slack and webhook integrations.
 * Shareable hires.
 * Agent Gallery.
 * BYOK keys.
@@ -279,19 +286,23 @@ The onboarding wizard checks what you already have, and offers to install what i
 
 ---
 
-## Getting started
+# Getting started
 
-### Download the app
+## Download the app
 
-Most people want this one. Signed and notarized macOS builds, plus Windows and Linux, are available from the upstream project's releases.
+Most people want the packaged application.
 
-Install it, open it, and the wizard takes you the rest of the way.
+Signed and notarized macOS builds, along with Windows and Linux builds, are available from the project's releases.
 
-You do still need at least one agent CLI on your machine, and the app can install missing ones for you from Settings → Prerequisites.
+You do not need Node.js, a toolchain, or this repository when using a packaged release.
 
-### Build from source
+You still need at least one supported agent CLI on your machine. Missing tools can be installed through the application's prerequisites/settings flow.
 
-Everything below is for contributors and for people who want to run an unreleased build.
+---
+
+## Build from source
+
+Everything below is for contributors and people who want to run an unreleased build.
 
 ### Prerequisites
 
@@ -300,7 +311,7 @@ Everything below is for contributors and for people who want to run an unrelease
 * A C/C++ toolchain for `node-pty`'s native addon.
 * At least one supported agent CLI on your `PATH`.
 * Optional API keys and local LLMs.
-* Optional semantic memory index.
+* Optional semantic memory indexing.
 
 On macOS:
 
@@ -308,7 +319,7 @@ On macOS:
 xcode-select --install
 ```
 
-Supported CLIs include:
+Supported agent CLIs include:
 
 ```text
 claude
@@ -325,9 +336,11 @@ copilot
 cursor-agent
 ```
 
-### Install & run
+---
 
-For your fork:
+## Install & run
+
+Clone this fork:
 
 ```bash
 git clone https://github.com/Jacuzzik/munder-difflin.git
@@ -336,19 +349,27 @@ npm install
 npm run dev
 ```
 
-On first launch you'll go through the onboarding wizard, then land on the floor.
+On first launch you'll go through the onboarding wizard and then land on the office floor.
 
 Use **Add agent** to spawn your first session.
 
-### Other scripts
+---
+
+## Other scripts
+
+### Production build
 
 ```bash
 npm run build
 ```
 
+### Preview production build
+
 ```bash
 npm run preview
 ```
+
+### Type checking
 
 ```bash
 npm run typecheck
@@ -360,15 +381,20 @@ If `node-pty` fails to load after an Electron upgrade:
 npm install
 ```
 
+The postinstall process rebuilds `node-pty` against the current Electron ABI.
+
 ---
 
-## Architecture
+# Architecture
 
-Two data planes feed one renderer: a terminal plane that owns the PTYs, the filesystem and git, and an event plane that runs the hive, the hook server and the router.
+Two data planes feed one renderer:
 
-The renderer talks to both only through a typed bridge.
+* A **terminal plane** that owns PTYs, filesystem access and git.
+* An **event plane** that runs the hive, hook server and router.
 
-See:
+The renderer communicates with both through a typed bridge.
+
+Related documentation:
 
 ```text
 docs/ARCHITECTURE.md
@@ -377,57 +403,26 @@ SPEC.md
 DESIGN.md
 ```
 
-for the detailed architecture, multi-agent design, terminal/event plane and visual system.
-
 ---
 
-## Roadmap
+# Roadmap
 
-Shipped through v0.4.6:
+The upstream project continues to evolve across agent engines, integrations, avatar behavior, persistence and command history.
 
-* Simplified Chinese and Arabic interface.
-* Right-to-left support.
-* Self-hosted fonts.
-* Multiple agent engines.
-* BYOK keys and local LLMs.
-* Voice orchestration.
-* Hive memory.
-* Mailboxes.
-* Blackboard.
-* Event log.
-* Command Center.
-* Kanban.
-* Scheduled missions.
-* Built-in Monaco IDE.
-* Git tooling.
-* Integrations registry.
-* Secret broker.
-* Slack workers.
-* Shareable hires.
-* Agent Gallery.
-* Observability.
-* Circuit breaker.
-* Durable persistence.
-* Session resume.
-* Multi-window floors.
-* One-click updates.
-* Skills browser.
-* Prerequisites checking.
-* Cost reporting.
-* Semantic memory.
-
-See `CHANGELOG.md` for the complete history.
-
-### Next up
+Current areas of development include:
 
 * More chat integrations.
-* More agent engines and integration templates.
+* Additional agent engines and integration templates.
 * Fuller avatar coverage driven by real hook events.
 * Durable layout and command history.
+* Continued improvements to the agent and office experience.
+* Additional visual customization in this fork.
+
+See `CHANGELOG.md` for detailed historical changes.
 
 ---
 
-## Contributing
+# Contributing
 
 Contributions are welcome.
 
@@ -437,7 +432,7 @@ Start with:
 CONTRIBUTING.md
 ```
 
-The short version:
+Basic development workflow:
 
 ```bash
 npm install
@@ -445,33 +440,33 @@ npm run dev
 npm run typecheck
 ```
 
-Keep the type checker green and derive new UI from the project's design tokens.
+When changing the UI, follow the project's design-system documentation.
 
 Good areas for contributions include:
 
-* Real hook events.
-* Add-agent flow.
+* Agent creation flows.
 * Configuration UI.
+* Real hook events.
 * Cross-platform improvements.
-* Agent integrations.
 * Office interactions.
+* Agent integrations.
 * Theme improvements.
 
-Every pull request should include before-and-after evidence for UI changes.
+Pull requests involving UI changes should include before-and-after evidence such as screenshots or recordings.
 
 ---
 
-## Telemetry
+# Telemetry
 
 Official builds send a small set of anonymous usage events.
 
-The complete event list, anonymity guarantees and opt-out methods are documented in:
+The project documents the event list, privacy guarantees and available opt-out mechanisms in:
 
 ```text
 TELEMETRY.md
 ```
 
-Forks and source builds may have different telemetry behavior depending on their configuration.
+Forks and source builds can have different telemetry behavior depending on their configuration.
 
 ---
 
@@ -487,11 +482,11 @@ See:
 LICENSE
 ```
 
-for the complete license.
+for the complete license text.
 
 ## Asset Licensing
 
-The bundled pixel art tilesets and maps are Modern Interiors - RPG Tileset [16X16] by LimeZu, used under the applicable Complete Version licence.
+The bundled pixel art tilesets and maps are from Modern Interiors - RPG Tileset [16X16] by LimeZu and are used under the applicable Complete Version licence.
 
 Credit to LimeZu is required by that licence and must remain in place.
 
@@ -530,16 +525,16 @@ Munder Difflin is an affectionate parody and is not affiliated with NBC's *The O
 * **Pixi.js** — rendering.
 * **xterm.js** — terminal rendering.
 * **node-pty** — pseudo-terminal processes.
-* **electron-vite** — Electron tooling.
+* **electron-vite** — Electron development tooling.
 * **CodeMirror** — editor functionality.
-* **Remotion** — landing-page animation.
+* **Remotion** — animated landing-page content.
 * **The Office (US)** — inspiration for Munder Difflin.
 
 ---
 
 <p align="center">
   <sub>
-    A themed fork of Munder Difflin by Jacuzzik.
+    A themed fork of Munder Difflin.
   </sub>
 </p>
 
