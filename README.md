@@ -264,6 +264,92 @@ than sending you to a docs page.
 - **Your language**: English, Simplified Chinese and Arabic, with right to left layout for Arabic. English is the default and nothing changes until you pick another one in Settings. The app does not read your OS locale. All three app fonts ship inside the bundle, so nothing is fetched at boot.
 - **Prerequisites** — one Settings page showing which supporting tools (uv, git, Node, MemPalace, each agent CLI) you have, what each is for, and a button that asks Michael to install what is missing.
 
+## 🎨 Optional Color Theme Patch
+
+This fork includes an optional color-theme patch that adds customizable application colors while keeping the original Munder Difflin functionality intact.
+
+### Apply the patch
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Jacuzzik/munder-difflin.git
+cd munder-difflin
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Apply the theme patch:
+
+```bash
+git apply munder-difflin-color-themes.patch
+```
+
+Then start the application:
+
+```bash
+npm run dev
+```
+
+### If the patch has already been applied
+
+If Git reports that the patch has already been applied, you don't need to apply it again.
+
+You can check the repository status with:
+
+```bash
+git status
+```
+
+### If Git reports conflicts
+
+Reset the working tree and try again:
+
+```bash
+git reset --hard HEAD
+git apply munder-difflin-color-themes.patch
+```
+
+> **Warning:** `git reset --hard HEAD` discards uncommitted changes. Only use it if you don't have changes you want to keep.
+
+### Removing the patch
+
+If you want to return to the unpatched version:
+
+```bash
+git reset --hard HEAD
+```
+
+Or, if you want to keep your other changes, revert the specific changes introduced by the patch instead of resetting the entire repository.
+
+### Updating the fork
+
+If you pull newer changes from the repository, the patch may need to be reapplied if the files it modifies changed upstream.
+
+```bash
+git pull
+git apply munder-difflin-color-themes.patch
+```
+
+If Git reports conflicts, resolve them before continuing.
+
+### What the patch changes
+
+The patch only changes the application's color/theme presentation.
+
+It does **not** replace the Munder Difflin agent architecture, terminal system, Electron architecture, Pixi.js office simulator, or core agent functionality.
+
+The original project is an Electron + React + TypeScript + Pixi.js + xterm.js + node-pty application, so the patch is intentionally kept separate from the core functionality.
+
+For the complete source and patch, see the GitHub repository:
+
+**Jacuzzik/munder-difflin**
+
+
 > [!NOTE]
 > **Status: v0.4.6, the release where the app stops assuming everyone reads English left to right.**
 > The interface now runs in Simplified Chinese and Arabic, with right to left support. English
