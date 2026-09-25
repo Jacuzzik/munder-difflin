@@ -1,530 +1,501 @@
-<div align="center">
-
-<img src="./docs/logo.png" alt="Munder Difflin — agent harness to run an office of your clones" width="180">
-
 # Munder Difflin
 
 ### Agent harness to run an office of your clones
 
-<p>
-  <a href="https://trendshift.io/repositories/46562" target="_blank" rel="noopener noreferrer"><img alt="GitHub Trending — #1 Repository of the Day" src="./docs/badge-github-trending.png" width="250" height="54"></a>
-  <a href="https://www.producthunt.com/products/munder-difflin?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_campaign=badge-munder-difflin" target="_blank" rel="noopener noreferrer"><img alt="Munder Difflin — #5 Product of the Day on Product Hunt" src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1221363&theme=light&period=daily" width="250" height="54"></a>
+<p align="center">
+  <img src="./docs/previews/default1.png" width="1100">
 </p>
 
-<img src="./docs/media/floor.png" alt="The Munder Difflin office floor: agents at desks working in parallel, with the Command Center and a live agent terminal on the right" width="1240">
-
-**Free, open source and performant** — a multi-agent harness that works with the
-subscriptions you already pay for, on their hourly limits. It turns the terminal coding CLI
-you already run into a clone of you, one that keeps working while you're away and
-coordinates a whole office of agents on your own machine.
-
-Wraps [Claude Code](https://claude.com/claude-code), Antigravity (Gemini), OpenAI Codex,
-**xAI Grok**, **Kimi Code**, **Gemini CLI**, **Qwen**, **OpenCode**, **Crush**,
-**pi.dev**, **GitHub Copilot CLI**, and **Cursor** — with bring-your-own keys and local LLMs.
-Agents that message, route, and remember, coordinated by **your clone** (Michael) and
-visualized as avatars at work on a shared office floor.
-
-<p>
-  <em>Electron · React · TypeScript · Pixi.js · xterm.js · node-pty</em>
+<p align="center">
+  <strong>A customized Munder Difflin fork with additional visual themes.</strong><br>
+  Same agent system. Same office simulation. Same core workflows.
 </p>
 
-<p>
-  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
-  <a href="./CHANGELOG.md"><img alt="Version: 0.4.6" src="https://img.shields.io/badge/version-0.4.6-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
-  <a href="https://github.com/chaitanyagiri/munder-difflin/releases"><img alt="Downloads across all releases" src="https://img.shields.io/github/downloads/chaitanyagiri/munder-difflin/total?style=flat-square&label=downloads&color=F4D35E&labelColor=6E1423"></a>
-  <img alt="Status: pre-release" src="https://img.shields.io/badge/status-pre--release-F4F1EA.svg?style=flat-square&labelColor=6E1423">
-  <img alt="Platform: macOS | Windows | Linux" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-F4F1EA.svg?style=flat-square&labelColor=6E1423">
-  <a href="./CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
-  <a href="https://munderdiffl.in/blog/"><img alt="Blog" src="https://img.shields.io/badge/blog-guides%20%26%20postmortems-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
-  <a href="https://discord.gg/SEDzP5ZPk5"><img alt="Discord" src="https://img.shields.io/badge/Discord-join%20the%20office-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
+<p align="center">
+  <a href="#themes">Themes</a> ·
+  <a href="#getting-started">Getting Started</a> ·
+  <a href="#what-it-is">What It Is</a> ·
+  <a href="#architecture">Architecture</a>
 </p>
-
-<br>
-
-<!-- Inline player renders on github.com (raw URL required; relative paths only link). -->
-<video src="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/hero.mp4" controls muted loop playsinline width="820">
-  <a href="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/hero.mp4">▶ Watch the floor — Munder Difflin running a hive of Claude Code agents</a>
-</video>
-
-<br><br>
-
-**[⬇ Download for macOS, Windows or Linux](https://github.com/chaitanyagiri/munder-difflin/releases/latest)**
-
-<sub>macOS builds are signed and notarized. You do not need to build from source to use it.</sub>
-
-</div>
 
 ---
 
-> [!NOTE]
-> **The world's best agents. The world's worst paper company.**
-> Munder Difflin takes the terminal-agent CLIs you already run — `claude`, `agy`, `codex`, `grok`,
-> `kimi`, `qwen`, `opencode`, `crush`, `pi`, and `copilot` — and turns them
-> into a self-coordinating team: each agent gets long-term memory, a mailbox, and a desk on a 2D
-> office floor — and **your clone** (Michael) routes work between them while you watch. He's the
-> boss of the floor; you're still the boss of him.
+## ✦ Themes
 
-## Contents
+This fork adds a collection of visual themes while keeping the underlying Munder Difflin experience intact.
 
-- [Supported agents](#supported-agents)
-- [What it is](#what-it-is)
-- [How it works](#how-it-works)
-- [Features](#features)
-- [Getting started](#getting-started)
-- [Architecture & project structure](./docs/ARCHITECTURE.md)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Telemetry](#telemetry)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-
-## Supported agents
-
-**Bring the CLI you already pay for.** Every one of these runs as a real process in its own
-terminal, with your existing subscription and its hourly limits. If it runs in a terminal, it
-can run here.
-
-<p>
-  <a href="https://docs.claude.com/en/docs/claude-code"><kbd>Claude Code</kbd></a>
-  <a href="https://github.com/openai/codex"><kbd>Codex · GPT</kbd></a>
-  <a href="https://x.ai/cli"><kbd>Grok · xAI</kbd></a>
-  <a href="https://www.kimi.com/code"><kbd>Kimi Code</kbd></a>
-  <a href="https://github.com/google-gemini/gemini-cli"><kbd>Gemini CLI</kbd></a>
-  <a href="https://antigravity.google/docs/cli-overview"><kbd>Antigravity · Gemini</kbd></a>
-  <a href="https://github.com/QwenLM/qwen-code"><kbd>Qwen</kbd></a>
-  <a href="https://opencode.ai/docs"><kbd>OpenCode</kbd></a>
-  <a href="https://github.com/charmbracelet/crush"><kbd>Crush · Charm</kbd></a>
-  <a href="https://pi.dev/docs/latest"><kbd>Pi</kbd></a>
-  <a href="https://docs.github.com/copilot/concepts/agents/about-copilot-cli"><kbd>GitHub Copilot</kbd></a>
-  <a href="https://cursor.com/docs/cli/install"><kbd>Cursor</kbd></a>
-  <kbd>+ any custom command</kbd>
-</p>
-
-Plus **bring your own keys** and **local models** through Ollama, LM Studio or vLLM.
-
-## What it is
-
-Munder Difflin is a desktop app that wraps **real terminal-agent CLIs** as fully-capable agents,
-wires them into a **hive mind**, and puts **your clone** in charge — Michael, the one agent *you*
-talk to in order to get things done. Under the hood it runs the **fastest memory layer in the
-world** so every agent remembers what it learns and recalls it instantly.
-
-- **Every terminal is an agent.** Each `claude`, `agy`, `codex`, `grok`, `kimi`, `qwen`, `opencode`, `crush`, `pi`, `copilot`, or custom session runs as a real
-  process in a pseudo-terminal (`node-pty`), byte-for-byte authentic, rendered with xterm.js.
-- **Every agent is an avatar.** Sessions appear as characters on a Pixi.js office floor — they walk
-  to stations as they work, and envelopes fly desk-to-desk when they message each other.
-- **The hive coordinates them.** Agents read their memory and drain a mailbox; the router moves
-  messages between inboxes; the GOD agent adjudicates, assigns, and escalates only when it needs you.
-- **Memory that's instant.** A markdown-first memory layer with a semantic recall index means agents
-  remember across sessions and recall in milliseconds.
-
-## How it works
-
-```
-            you ── talk to ──►  ┌─────────────┐
-                                │  GOD agent  │  orchestrator / supervisor
-                                │ (Michael's  │  roster · routing · adjudication
-                                │   office)   │  blackboard · task ledger
-                                └──────┬──────┘
-                                       │ assigns · routes · escalates
-              ┌────────────────────────┼────────────────────────┐
-              ▼                         ▼                         ▼
-        ┌───────────┐            ┌───────────┐            ┌───────────┐
-        │  agent A  │  message   │  agent B  │  message   │  agent C  │
-        │ provider  │ ─────────► │ provider  │ ─────────► │ provider  │
-        │  + memory │            │  + memory │            │  + memory │
-        └───────────┘            └───────────┘            └───────────┘
-              └──────── shared hive: memory · mailbox · blackboard · log ───────┘
-```
-
-1. **You spawn agents** — each is a normal terminal process (`claude`, `agy`, `codex`, or custom)
-   with its own working directory, identity, and provider-specific lifecycle.
-2. **Agents collaborate through the hive** — a local git repo of plain files. They write to their own
-   `outbox/`; the harness's router delivers into recipients' `inbox/`. No agent ever touches git
-   (single-committer design avoids `index.lock` corruption).
-3. **The GOD agent runs the floor** — it reads every request, resolves routine ones itself (keeping
-   the system fully autonomous), and only escalates *critical* items (spend, destructive ops, scope
-   changes) into an approvals queue you act on.
-4. **Everything is visible** — you watch avatars move, envelopes fly, and the live terminal stream;
-   you can type back into any session, browse its files, and read its git history.
-
-See [`HIVE.md`](./HIVE.md) for the full multi-agent design, [`SPEC.md`](./SPEC.md) for the
-terminal/event plane, and [`DESIGN.md`](./DESIGN.md) for the visual system.
-
-## Features
+### Theme Gallery
 
 <table>
-<tr>
-<td width="50%" valign="middle">
-
-### Talk to one agent, not twelve
-
-Michael is your clone and the only agent you brief. He assigns the work, routes the traffic, and
-escalates the few things that actually need you.
-
-</td>
-<td width="50%">
-  <a href="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/demo/orchestrator.mp4"><img src="./docs/media/demo/orchestrator-poster.jpg" alt="Briefing Michael, the orchestrator agent, from the Command Center" width="100%"></a>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Hire an agent in a few clicks
-
-Pick the CLI, the model and the autonomy, give it a desk, and it starts working. Import a
-ready made role from the [Agent Gallery](https://munderdiffl.in/hires/) if you would rather not
-start from scratch.
-
-</td>
-<td width="50%">
-  <img src="./docs/screenshots/add-agent.png" alt="The add agent dialog: choosing a provider, model and role" width="100%">
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Memory that survives the session
-
-Every agent keeps markdown memory that is mined into a shared, searchable palace. Close the app,
-come back tomorrow, and they still know what they learned.
-
-</td>
-<td width="50%">
-  <img src="./docs/screenshots/memory.png" alt="Searching the shared memory palace across every agent" width="100%">
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Autonomy with a leash
-
-Set how far each agent may go on its own. Spend, scope and destructive operations come back to
-you, and a circuit breaker steers, constrains, then stops anything that loops or runs away.
-
-</td>
-<td width="50%">
-  <img src="./docs/screenshots/autonomy.png" alt="Per agent autonomy and approval settings" width="100%">
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Watch the whole floor work
-
-Agents walk to stations as they work and envelopes fly desk to desk when they message each other.
-Click any desk to read that terminal live, and type straight back into it.
-
-</td>
-<td width="50%">
-  <a href="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/demo/agents.mp4"><img src="./docs/media/demo/agents-poster.jpg" alt="Agents working in parallel on the office floor" width="100%"></a>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Set up once
-
-The onboarding wizard checks what you already have, and offers to install what is missing rather
-than sending you to a docs page.
-
-</td>
-<td width="50%">
-  <a href="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/demo/setup.mp4"><img src="./docs/media/demo/setup-poster.jpg" alt="The first run setup wizard" width="100%"></a>
-</td>
-</tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="./docs/previews/default1.png" width="100%">
+      <br>
+      <sub><b>Original</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./docs/previews/obsidian.png" width="100%">
+      <br>
+      <sub><b>Obsidian</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./docs/previews/ember.png" width="100%">
+      <br>
+      <sub><b>Ember</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="./docs/previews/violet.png" width="100%">
+      <br>
+      <sub><b>Violet</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./docs/previews/arctic.png" width="100%">
+      <br>
+      <sub><b>Arctic</b></sub>
+    </td>
+    <td></td>
+  </tr>
 </table>
 
-**The floor**
-- **Every terminal is a real agent.** Claude Code, Antigravity (Gemini), OpenAI Codex, xAI Grok, Kimi Code, Gemini CLI, Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, Cursor, or a custom command — each in its own `node-pty` PTY, rendered with xterm.js.
-- **Every agent is an avatar.** A Pixi.js office floor where agents walk to stations, envelopes fly desk to desk, and avatar state reflects real work.
-- **A GOD orchestrator you talk to.** It routes tasks, adjudicates traffic, and escalates only what needs a human. Or press **Talk** and run the floor by voice.
-- **Per-agent git worktrees.** Optional isolation so parallel agents never collide on branches.
+> **Note:** Replace `obsidian.png`, `ember.png`, `violet.png`, and `arctic.png` with your actual preview filenames if they are different.
 
-**Memory & coordination**
-- **The hive** — per-agent memory, atomic-file mailboxes, a shared blackboard, an append-only event log, single-committer git.
-- **Semantic recall** — markdown memory mined into a shared palace, searchable from the UI, with condensation so it doesn't grow forever.
-- **Enterprise Knowledge Graph** — your own documents and policies, queryable by any agent.
+### Available Themes
 
-**Control & safety**
-- **Human gates** — spend, scope, and destructive ops escalate to you. Steer mid-run or stop gracefully.
-- **Circuit breaker** — a steer → constrain → stop ladder for agents that loop, storm errors, or blow their budget.
-- **Budgets & telemetry** — per-agent token budgets, real cost from transcripts, a durable ledger, OTel spans, and a tool waterfall.
+| Theme        | Style                                                |
+| ------------ | ---------------------------------------------------- |
+| **Original** | The classic Munder Difflin appearance                |
+| **Obsidian** | Deep grayscale, dark surfaces and subdued contrast   |
+| **Ember**    | Graphite surfaces with neon orange accents           |
+| **Violet**   | Purple and magenta focused interface                 |
+| **Arctic**   | Bright white and cool-gray Apple-inspired appearance |
 
-**Command Center**
-- Kanban tasks with dependencies, scheduled missions + heartbeat, live fleet monitoring, memory search, activity log, and a CI watcher.
-- **Skills** — what every agent can already do across Claude Code, OpenCode and Codex, plus a browsable catalog of 227 more with search, filters, install and uninstall.
-- **Built-in Monaco IDE** — file tree, editor tabs, save, plus CHANGES · HISTORY · COMPARE git rails with commit graph, diffs, branch compare, and guarded checkout. All fs/git access brokered through main.
+### Custom Theme Patch
 
-**Getting work in and out**
-- **Slack & webhooks** — message a channel or POST a webhook; Michael can spawn an ephemeral worker, reply in-thread, and tear it down.
-- **Shareable hires + Agent Gallery** — import a role from a `munderdifflin://hire` link; import only pre-fills the form, a human still spawns it. Browse roles at the [Agent Gallery](https://munderdiffl.in/hires/).
-- **BYOK keys + local LLMs** — per-provider keys in a write-only secret broker, plus Ollama / LM Studio / vLLM base URLs. Guides: [open models](https://munderdiffl.in/blog/run-munder-difflin-on-open-models/) · [Mac Mini](https://munderdiffl.in/blog/run-munder-difflin-on-a-mac-mini/).
-- **Updates in one click**: the title-bar badge runs the real update. It downloads the build for your machine, then restarts and installs it, and it reads `latest` once a check confirms you are current. A manual download is the fallback for when the updater cannot fetch the build itself. The first run afterwards opens that release's notes as a designed page rather than a version number.
-- **Your language**: English, Simplified Chinese and Arabic, with right to left layout for Arabic. English is the default and nothing changes until you pick another one in Settings. The app does not read your OS locale. All three app fonts ship inside the bundle, so nothing is fetched at boot.
-- **Prerequisites** — one Settings page showing which supporting tools (uv, git, Node, MemPalace, each agent CLI) you have, what each is for, and a button that asks Michael to install what is missing.
+The repository also contains the theme customization patch:
 
-## 🎨 Optional Color Theme Patch
-
-This fork includes an optional color-theme patch that adds customizable application colors while keeping the original Munder Difflin functionality intact.
-
-### Apply the patch
-
-Clone the repository:
-
-```bash
-git clone https://github.com/Jacuzzik/munder-difflin.git
-cd munder-difflin
+```text
+munder-difflin-color-themes.patch
 ```
 
-Install the dependencies:
+To apply the patch to another Munder Difflin checkout:
+
+```bash
+git apply munder-difflin-color-themes.patch
+```
+
+---
+
+## About Munder Difflin
+
+Free, open source and performant — a multi-agent harness that works with the subscriptions you already pay for, on their hourly limits. It turns the terminal coding CLI you already run into a clone of you, one that keeps working while you're away and coordinates a whole office of agents on your own machine.
+
+Wraps Claude Code, Antigravity (Gemini), OpenAI Codex, xAI Grok, Kimi Code, Gemini CLI, Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, and Cursor — with bring-your-own keys and local LLMs.
+
+Agents message, route, and remember, coordinated by your clone (Michael) and visualized as avatars at work on a shared office floor.
+
+**Electron · React · TypeScript · Pixi.js · xterm.js · node-pty**
+
+---
+
+## Supported Agents
+
+Bring the CLI you already pay for.
+
+Every one of these runs as a real process in its own terminal, with your existing subscription and its hourly limits. If it runs in a terminal, it can run here.
+
+`Claude Code` · `Codex · GPT` · `Grok · xAI` · `Kimi Code` · `Gemini CLI` · `Antigravity · Gemini` · `Qwen` · `OpenCode` · `Crush · Charm` · `Pi` · `GitHub Copilot` · `Cursor` · `+ any custom command`
+
+Plus bring your own keys and local models through Ollama, LM Studio or vLLM.
+
+---
+
+## What It Is
+
+Munder Difflin is a desktop app that wraps real terminal-agent CLIs as fully-capable agents, wires them into a hive mind, and puts your clone in charge — Michael, the one agent you talk to in order to get things done.
+
+Under the hood it runs a memory layer so every agent can remember what it learns and recall it across sessions.
+
+### Every terminal is an agent
+
+Each `claude`, `agy`, `codex`, `grok`, `kimi`, `qwen`, `opencode`, `crush`, `pi`, `copilot`, or custom session runs as a real process in a pseudo-terminal (`node-pty`), rendered with xterm.js.
+
+### Every agent is an avatar
+
+Sessions appear as characters on a Pixi.js office floor. They walk to stations as they work, and messages can travel between desks.
+
+### The hive coordinates them
+
+Agents read their memory and drain a mailbox. The router moves messages between inboxes, while the GOD agent coordinates work and escalates when human input is required.
+
+### Memory across sessions
+
+A markdown-first memory layer with semantic recall allows agents to retain useful information across sessions.
+
+### Prerequisites
+
+A dedicated Settings page shows supporting tools such as:
+
+* `uv`
+* `git`
+* Node.js
+* MemPalace
+* Agent CLIs
+
+The application can also help identify missing dependencies.
+
+---
+
+## Status
+
+The upstream project has shipped a broad set of features including multiple agent engines, local LLM support, voice orchestration, the hive, Command Center, IDE functionality, integrations, durable persistence, session resume, multi-window floors, Skills, prerequisites checking, cost reporting, semantic memory and automatic updates.
+
+This fork focuses on additional visual customization while preserving the core Munder Difflin experience.
+
+---
+
+# Getting Started
+
+## Download the App
+
+Most people want the packaged application.
+
+Signed and notarized macOS builds, along with Windows and Linux builds, are available from the project's releases.
+
+You do not need Node.js, a toolchain, or this repository when using a packaged release.
+
+You still need at least one supported agent CLI on your machine. Missing tools can be installed through the application's prerequisites/settings flow.
+
+---
+
+## Build From Source
+
+Everything below is for contributors and people who want to run an unreleased build.
+
+### Prerequisites
+
+* macOS, Windows, or Linux.
+* Node.js 18+ and npm.
+* A C/C++ toolchain for `node-pty`'s native addon.
+* At least one supported agent CLI on your `PATH`.
+* Optional API keys and local LLMs.
+* Optional semantic memory indexing.
+
+On macOS, install the Xcode Command Line Tools with:
+
+```bash
+xcode-select --install
+```
+
+Supported agent CLIs include:
+
+```text
+claude
+agy
+codex
+grok
+kimi
+gemini
+qwen
+opencode
+crush
+pi
+copilot
+cursor-agent
+```
+
+---
+
+## Install & Run
+
+```bash
+git clone <YOUR_FORK_URL>
+cd munder-difflin
+npm install
+npm run dev
+```
+
+On first launch you'll go through the onboarding wizard and then land on the office floor.
+
+Use **Add agent** to spawn your first session.
+
+---
+
+## Other Scripts
+
+### Production build
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+### Type checking
+
+```bash
+npm run typecheck
+```
+
+If `node-pty` fails to load after an Electron upgrade, run:
 
 ```bash
 npm install
 ```
 
-Apply the theme patch:
+The postinstall process rebuilds `node-pty` against the current Electron ABI.
 
-```bash
-git apply munder-difflin-color-themes.patch
+---
+
+# Architecture
+
+Two data planes feed one renderer:
+
+* A **terminal plane** that owns PTYs, filesystem access and git.
+* An **event plane** that runs the hive, hook server and router.
+
+The renderer communicates with both through a typed bridge.
+
+The detailed architecture documentation is maintained separately in the project's documentation.
+
+Related documentation includes:
+
+```text
+docs/ARCHITECTURE.md
+HIVE.md
+SPEC.md
+DESIGN.md
 ```
 
-Then start the application:
+---
+
+# Features
+
+## Multi-Agent Office
+
+Run multiple coding agents simultaneously and visualize them as characters working throughout the office.
+
+## Real Terminal Sessions
+
+Agents operate through real terminal processes instead of simulated chat interfaces.
+
+## Agent Memory
+
+Agents can maintain persistent memory and recall information across sessions.
+
+## Hive Coordination
+
+The office provides a coordination layer allowing agents to communicate and route work between each other.
+
+## GOD Orchestrator
+
+Michael acts as the central orchestrator and can coordinate work across the office.
+
+## Multiple AI Engines
+
+Use different supported agent engines depending on the task and configuration.
+
+## Local Models
+
+Bring local models through supported integrations such as:
+
+* Ollama
+* LM Studio
+* vLLM
+
+## Voice
+
+Realtime Michael provides a voice channel for interacting with the orchestrator when configured.
+
+## Command Center
+
+Manage work through centralized views and workflows.
+
+## Built-In IDE
+
+The application includes an integrated development environment with git functionality.
+
+## Integrations
+
+Connect external tools and services through the integrations system.
+
+## Skills
+
+Agents can be configured with additional capabilities and skills.
+
+## Session Persistence
+
+Sessions can persist and resume rather than starting from scratch every time.
+
+## Multi-Window Floors
+
+Run multiple office/floor views when supported by the current build.
+
+---
+
+# Roadmap
+
+The upstream project continues to evolve across agent engines, integrations, avatar behavior, persistence and command history.
+
+Current areas of development include:
+
+* More chat integrations.
+* Additional agent engines and integration templates.
+* Fuller avatar coverage driven by real hook events.
+* Durable layout and command history.
+* Continued improvements to the agent and office experience.
+
+See the project's `CHANGELOG.md` for detailed historical changes.
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+Start with:
+
+```text
+CONTRIBUTING.md
+```
+
+The basic workflow is:
 
 ```bash
+npm install
 npm run dev
+npm run typecheck
 ```
 
-### If the patch has already been applied
+When changing the UI, follow the project's design-system documentation.
 
-If Git reports that the patch has already been applied, you don't need to apply it again.
+### UI contributions
 
-You can check the repository status with:
+Pull requests involving UI changes should include before-and-after evidence such as screenshots or recordings.
 
-```bash
-git status
+Good areas for contributions include:
+
+* Agent creation flows.
+* Configuration UI.
+* Real hook events.
+* Cross-platform improvements.
+* Office interactions.
+* Agent integrations.
+* Theme improvements.
+
+---
+
+# Custom Themes
+
+This fork's theme work is intentionally focused on presentation.
+
+The goal is to allow the same Munder Difflin experience to be presented through different visual styles without turning each theme into a separate application.
+
+### Original
+
+The baseline Munder Difflin appearance.
+
+### Obsidian
+
+A darker grayscale interface focused on low-light use, subdued surfaces and minimal visual noise.
+
+### Ember
+
+A dark graphite interface with bright orange accents.
+
+### Violet
+
+A purple/magenta visual treatment.
+
+### Arctic
+
+A bright interface using white and cool-gray surfaces with a clean modern aesthetic.
+
+---
+
+# Telemetry
+
+Official builds send a small set of anonymous usage events.
+
+The project documents the event list, privacy guarantees and available opt-out mechanisms in:
+
+```text
+TELEMETRY.md
 ```
 
-### If Git reports conflicts
+Forks and source builds can have different telemetry behavior depending on their configuration.
 
-Reset the working tree and try again:
+---
 
-```bash
-git reset --hard HEAD
-git apply munder-difflin-color-themes.patch
+# License
+
+## Source Code
+
+The source code is licensed under the MIT License.
+
+See:
+
+```text
+LICENSE
 ```
 
-> **Warning:** `git reset --hard HEAD` discards uncommitted changes. Only use it if you don't have changes you want to keep.
+for the complete license text.
 
-### Removing the patch
+## Asset Licensing
 
-If you want to return to the unpatched version:
+The bundled pixel art tilesets and maps are from Modern Interiors - RPG Tileset [16X16] by LimeZu and are used under the applicable Complete Version licence.
 
-```bash
-git reset --hard HEAD
+Credit to LimeZu is required by that licence and must remain in place.
+
+The Office cast is not LimeZu artwork. It is drawn procedurally in:
+
+```text
+src/renderer/src/assets/portraitArt.ts
 ```
 
-Or, if you want to keep your other changes, revert the specific changes introduced by the patch instead of resetting the entire repository.
+See:
 
-### Updating the fork
-
-If you pull newer changes from the repository, the patch may need to be reapplied if the files it modifies changed upstream.
-
-```bash
-git pull
-git apply munder-difflin-color-themes.patch
+```text
+src/renderer/src/assets/ATTRIBUTION.md
 ```
 
-If Git reports conflicts, resolve them before continuing.
+for attribution details.
 
-### What the patch changes
+The bundled pixel art is licensed separately from the source code.
 
-The patch only changes the application's color/theme presentation.
+See:
 
-It does **not** replace the Munder Difflin agent architecture, terminal system, Electron architecture, Pixi.js office simulator, or core agent functionality.
-
-The original project is an Electron + React + TypeScript + Pixi.js + xterm.js + node-pty application, so the patch is intentionally kept separate from the core functionality.
-
-For the complete source and patch, see the GitHub repository:
-
-**Jacuzzik/munder-difflin**
-
-
-> [!NOTE]
-> **Status: v0.4.6, the release where the app stops assuming everyone reads English left to right.**
-> The interface now runs in Simplified Chinese and Arabic, with right to left support. English
-> stays the default and nothing changes until you pick a language in Settings, under General; the
-> app never reads your operating system locale. All three app fonts now ship inside the bundle
-> instead of loading from Google, which is blocked in mainland China and was breaking the interface
-> for exactly the people the Chinese translation was for. An input method Enter no longer fires a
-> send, a search or a rename while a candidate word is still being composed.
-> Every string is translated, with nothing falling back to English, and the terminals read right to
-> left. Some screens still need their padding and icons mirrored, and that is the next piece of
-> work. No Arabic reader has reviewed the wording yet.
-> Also in this release: the update badge runs the real download and restart instead of handing you
-> a disk image, the update check can no longer spin forever, Settings persists through one Save
-> button, the model lists moved into a checked in catalog, and the ASK ME card renders markdown.
-> On the security side: the name of the CLI an agent launches is validated before it is resolved
-> against your PATH, the OS sandbox stays on in auto mode, and analytics stopped sending IP and
-> derived location. Telemetry now counts the messages you send to an agent, a count and nothing
-> else, with no text, length or hash of the body in any shape.
-> 16 community pull requests from 13 contributors landed in this release, one of them (#213)
-> re-implemented rather than merged.
-> **If you're on 0.3.8, update:** that build's usage-limit guard never released the agents it held,
-> and it has been removed entirely.
-> macOS (signed & notarized), Windows, and Linux builds are on the
-> [releases page](https://github.com/chaitanyagiri/munder-difflin/releases/latest).
-
-<div align="right">(<a href="#munder-difflin">↑ back to top</a>)</div>
-
-## Getting started
-
-### Download the app
-
-**Most people want this one.** Signed and notarized macOS builds, plus Windows and Linux, are on
-the [latest release](https://github.com/chaitanyagiri/munder-difflin/releases/latest). Install it,
-open it, and the wizard takes you the rest of the way. You do not need Node, a toolchain, or this
-repository.
-
-You do still need at least one agent CLI on your machine, and the app can install missing ones for
-you from **Settings → Prerequisites**.
-
-### Build from source
-
-Everything below is for contributors and for people who want to run an unreleased build.
-
-### Prerequisites
-
-- **macOS, Windows, or Linux**.
-- **Node.js 18+** and npm.
-- A **C/C++ toolchain** for `node-pty`'s native addon — on macOS, install Xcode Command Line Tools:
-  ```bash
-  xcode-select --install
-  ```
-- At least one supported agent CLI on your `PATH` — **[Claude Code](https://claude.com/claude-code)**
-  (`claude`, the default), **Antigravity** (`agy`), **OpenAI Codex** (`codex`), **xAI Grok** (`grok`),
-  **Kimi Code** (`kimi`), **Gemini CLI** (`gemini`), **Qwen** (`qwen`), **OpenCode** (`opencode`),
-  **Crush** (`crush`), **pi.dev** (`pi`), **GitHub Copilot** (`copilot`), or **Cursor** (`cursor-agent`).
-  Most missing CLIs self-heal: the harness runs the installer in the
-  terminal and continues into the new binary.
-- *Optional:* **your own API keys and local LLMs** in **Settings → AI Engines** (Ollama / LM Studio / vLLM).
-- *Optional:* the semantic memory index for instant cross-session recall — markdown memory works without it.
-
-### Install & run
-
-```bash
-git clone https://github.com/chaitanyagiri/munder-difflin.git
-cd munder-difflin
-npm install        # postinstall rebuilds node-pty against Electron's ABI
-npm run dev        # launches the Electron app with hot reload
+```text
+LICENSE-ASSETS
 ```
 
-On first launch you'll go through the onboarding wizard, then land on the floor. Use **Add agent** to
-spawn your first session — the GOD agent seats itself in Michael's office automatically.
+for the applicable asset licensing information.
 
-### Other scripts
+Munder Difflin is an affectionate parody and is not affiliated with NBC's *The Office* or Dunder Mifflin.
 
-```bash
-npm run build      # production build via electron-vite
-npm run preview    # preview the production build
-npm run typecheck  # type-check the node (main/preload) and web (renderer) projects
-```
+---
 
-> If `node-pty` fails to load after an Electron upgrade, re-run `npm install` (the `postinstall` hook
-> runs `electron-rebuild` against the current Electron ABI).
+# Acknowledgements
 
-## Architecture
+* **LimeZu** — Modern Interiors pixel-art tilesets.
+* **shahar061/the-office** — office tileset/map vendoring.
+* **Pixi.js** — rendering.
+* **xterm.js** — terminal rendering.
+* **node-pty** — pseudo-terminal processes.
+* **electron-vite** — Electron development tooling.
+* **CodeMirror** — editor functionality.
+* **Remotion** — animated landing-page content.
+* **The Office (US)** — inspiration for Munder Difflin.
 
-Two data planes feed one renderer: a **terminal plane** that owns the PTYs, the filesystem and git,
-and an **event plane** that runs the hive, the hook server and the router. The renderer talks to
-both only through a typed bridge.
+---
 
-**The full diagrams, the module by module project structure, and the design system live in
-[`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md).** They moved out of this file so it can explain
-the product rather than the codebase. Also see [`HIVE.md`](./HIVE.md) for the multi-agent design,
-[`SPEC.md`](./SPEC.md) for the terminal and event plane, and [`DESIGN.md`](./DESIGN.md) for the
-visual system.
-
-<div align="right">(<a href="#munder-difflin">↑ back to top</a>)</div>
-
-## Roadmap
-
-Shipped through **v0.4.6**: a Simplified Chinese and Arabic interface with right to left support
-and self-hosted fonts, twelve agent engines with BYOK keys and local LLMs, voice orchestration,
-the hive (memory · mailboxes · blackboard · event log), Command Center with kanban and weekday
-schedules, a built-in Monaco IDE with git rails, integrations registry + secret broker,
-Slack-spawned workers, shareable hires and the Agent Gallery, observability and the circuit
-breaker, durable persistence, session resume, multi-window floors, one click updates, a Skills
-browser, a live Prerequisites check, cost reporting folded from the ledger, semantic memory
-that works on Apple Silicon, and an updater that installs the build instead of pointing at it.
-Full history in [`CHANGELOG.md`](./CHANGELOG.md).
-
-Next up:
-
-- [ ] **More chat integrations** — Telegram and richer chat bridges that pipe a channel into Michael's queue and route replies back out.
-- [ ] **More engines & integration templates** — keep growing the engine roster and the integrations registry.
-- [ ] **Fuller avatar coverage** — drive the remaining station visits and tool-bubbles entirely from real hook events.
-- [ ] **Durable layout & command history** — extend persistence to agent layout and per-session history.
-
-<div align="right">(<a href="#munder-difflin">↑ back to top</a>)</div>
-
-## Contributing
-
-Contributions are welcome — this is pre-release software with a lot of surface area. Start with
-[`CONTRIBUTING.md`](./CONTRIBUTING.md). The short version: fork, `npm install && npm run dev`, keep
-`npm run typecheck` green, and **derive any new UI from [`DESIGN.md`](./DESIGN.md) tokens**. Good
-first areas: wiring real hook events, the add-agent flow, the config drawer, and cross-platform work.
-
-> [!IMPORTANT]
-> **Every pull request must show a before and an after** — screenshots, or a recording when the
-> thing moves — under the `### Before` and `### After` headings in the PR template. This is checked
-> automatically and a PR without it does not merge. "My change has no UI" is not an exemption; it
-> just changes what the evidence looks like. See
-> [Evidence is mandatory](./CONTRIBUTING.md#evidence-is-mandatory).
-
-Questions, bugs, or want to show off your office? Join the Discord: **<https://discord.gg/SEDzP5ZPk5>**. Add your Discord handle to a PR and you'll get the `employee of the month` role when it merges.
-
-**Looking for somewhere to start?** The
-[`good first issue`](https://github.com/chaitanyagiri/munder-difflin/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-list is kept stocked with small, self contained work that has a clear finish line.
-
-**Everyone whose code is in Munder Difflin is listed in [`CONTRIBUTORS.md`](./CONTRIBUTORS.md).**
-If that is you, it is yours to point at. The list is generated from the pull requests themselves and
-updates on its own, so you appear without having to ask. It also names the contributions that are in
-`main` but that GitHub shows as closed rather than merged, because that was our mistake to record
-and not theirs to explain.
-
-<a href="./CONTRIBUTORS.md">
-  <img src="https://contrib.rocks/image?repo=chaitanyagiri/munder-difflin" alt="Munder Difflin contributors">
-</a>
-
-## Telemetry
-
-Official builds send a **small set of anonymous usage events** (app opened, agent spawned, feature
-used) — never prompts, code, file paths, or agent output. The complete event list, the anonymity
-guarantees, and the three ways to opt out (Settings toggle, `DO_NOT_TRACK`, or building from
-source — forks compile with no key and send nothing) are documented in
-[`TELEMETRY.md`](./TELEMETRY.md).
-
-## License
-
-> [!IMPORTANT]
-> **Asset licensing.** The bundled pixel art (tilesets and maps) is **Modern Interiors - RPG Tileset
-> [16X16]** by [LimeZu](https://limezu.itch.io/moderninteriors), used under the **Complete Version
-> licence**, which permits editing and use in commercial and non-commercial projects. **Credit to
-> LimeZu is required by that licence** and must stay in place. The Office cast is not LimeZu art. It
-> is drawn procedurally in `portraitArt.ts`. See
-> [`src/renderer/src/assets/ATTRIBUTION.md`](./src/renderer/src/assets/ATTRIBUTION.md).
-
-The **source code** is licensed under the **MIT License** — see [`LICENSE`](./LICENSE). The MIT grant
-covers the code only; the bundled pixel art is licensed separately from LimeZu and is carved out in
-[`LICENSE-ASSETS`](./LICENSE-ASSETS). *Munder Difflin* is an affectionate parody and is not affiliated with NBC's *The Office* or
-Dunder Mifflin.
-
-## Acknowledgements
-
-- [LimeZu](https://limezu.itch.io/) for the *Modern Interiors* pixel-art tilesets (Complete Version licence).
-- [`shahar061/the-office`](https://github.com/shahar061/the-office) for the office tileset/map vendoring.
-- [Pixi.js](https://pixijs.com/) · [xterm.js](https://xtermjs.org/) · [node-pty](https://github.com/microsoft/node-pty) · [electron-vite](https://electron-vite.org/) · [CodeMirror](https://codemirror.net/) for the libraries this is built on.
-- [Remotion](https://www.remotion.dev/) for the landing page's animated "how it works" clips (`landing-remotion/`).
-- *The Office* (US) for Munder Difflin, Inc.
+<p align="center">
+  <sub>
+    Munder Difflin — an office of your clones.
+  </sub>
+</p>
